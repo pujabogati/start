@@ -43,7 +43,7 @@ def main(speed=0, bg_color="grey"):
             snowflake_branch(size, myTurtle)
             myTurtle.left(45)
 
-    path = 'D:\\FAU\Winter 2022\DSSS\Homework\HW5\image.png'
+    path = '.\image.png'
     win = pygetwindow.getWindowsWithTitle('Python Turtle Graphics')[0]
     left, top = win.topleft
     right, bottom = win.bottomright
