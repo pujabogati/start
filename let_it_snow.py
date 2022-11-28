@@ -1,5 +1,10 @@
+from random import randint
 import turtle
 import numpy as np
+import pygetwindow
+import pyautogui
+import PIL.ImageGrab
+from PIL import Image
 
 
 def main(speed=0, bg_color="grey"):
@@ -8,14 +13,14 @@ def main(speed=0, bg_color="grey"):
     myTurtle = turtle.Turtle()
     
     # set speed to 'fastest = 0'
+    turtle.colormode(255)
     myTurtle.speed(speed)
     # change background color
     turtle_screen.bgcolor(bg_color)
-  
- 
+
+
     """TODO: define different colors here"""
-
-
+    color = ["red", "blue", "white", "green", "gold", "violet", "yellow"]
     for _ in range(10):
         # define some params
         size = 18
@@ -23,15 +28,31 @@ def main(speed=0, bg_color="grey"):
 
         """TODO: set snowflake color here (one of the colors defined above)"""
 
+        r = randint(0,255)
+        g = randint(0,255)
+        b = randint(0,255)
+
         # Go to the start position of the snowflake
         myTurtle.penup()
         myTurtle.goto(pos[0], pos[1])
         myTurtle.pendown()
+        myTurtle.color((r,g,b))
 
         # draw the snowflake
         for _ in range(8):
             snowflake_branch(size, myTurtle)
             myTurtle.left(45)
+
+    path = 'D:\\FAU\Winter 2022\DSSS\Homework\HW5\image.png'
+    win = pygetwindow.getWindowsWithTitle('Python Turtle Graphics')[0]
+    left, top = win.topleft
+    right, bottom = win.bottomright
+    pyautogui.screenshot(path)
+    im = Image.open(path)
+    im = im.crop((left+10, top, right-10, bottom-10))
+    im.save(path)
+    im.show(path)
+    turtle.Screen().exitonclick()
 
 
 def snowflake_branch(size, myTurtle):
@@ -47,6 +68,6 @@ def snowflake_branch(size, myTurtle):
     myTurtle.right(90)
     myTurtle.forward(size)
 
-
 if __name__ == "__main__":
     main()
+
