@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-  name='FakeSnowflakes',
+  name='snowhite',
 
   version='0.0.1',
 
